@@ -1,0 +1,38 @@
+{% extends "docshare/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="auth-box">
+    <h2 style="text-align:center;">Create Account</h2>
+
+    <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        <p>
+            <label for="id_username">Username:</label><br>
+            {{ form.username }}
+        </p>
+        <p>
+            <label for="id_password1">Password:</label><br>
+            {{ form.password1 }}
+        </p>
+        <p>
+            <label for="id_password2">Password confirmation:</label><br>
+            {{ form.password2 }}
+        </p>
+
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div style="color:red; margin-bottom: 10px; font-size:0.8em;">{{ error }}</div>
+            {% endfor %}
+        {% endfor %}
+
+        <button type="submit" style="width:100%; padding:8px; background:#007bff; color:white; border:none; border-radius:5px;">
+            Register
+        </button>
+    </form>
+
+    <p style="text-align:center; margin-top:10px;">
+        Already have an account? <a href="{% url 'login' %}">Login here</a>.
+    </p>
+</div>
+{% endblock %}
