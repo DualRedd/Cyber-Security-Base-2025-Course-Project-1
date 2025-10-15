@@ -10,6 +10,16 @@ from django.contrib.auth.forms import UserCreationForm
 def index(request):
     return render(request, 'docshare/pages/index.html')
 
+@login_required
+def mypage(request):
+    return render(request, 'docshare/pages/my-page.html')
+
+@login_required
+def create(request):
+    if request.method == 'POST':
+        return redirect('mypage')
+
+    return render(request, 'docshare/pages/create-doc.html')
 
 def register(request):
     if request.user.is_authenticated:

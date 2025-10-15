@@ -10,7 +10,9 @@
 <body>
     <nav>
         <div>
-            <a href="/">Home</a>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'mypage' %}">My Docs</a>
+            <a href="{% url 'createdoc' %}">Create</a>
         </div>
         <div>
             {% if user.is_authenticated %}

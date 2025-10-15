@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="doc-list-container">
-    <h3>All documents</h3>
+    <h3>Your Documents</h3>
     <hr>
     {% for doc in documents %}
         <div class="doc-card">
@@ -11,7 +11,7 @@
         </div>
     {% endfor %}
     {% if not documents %}
-        <p>No documents found.</p>
+        <p>No documents created yet.</p>
     {% endif %}
 </div>
 
