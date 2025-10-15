@@ -1,0 +1,18 @@
+<div class="doc-grid">
+    {% for doc in documents %}
+        <a href="{% url 'document-detail' doc.id %}" class="doc-card-link">
+            <div class="doc-card">
+                <div class="doc-card-header">
+                    <h3 class="doc-title">{{ doc.title }}</h3>
+                    <p class="doc-meta">
+                        by <span class="doc-author">{{ doc.owner.username }}</span> · 
+                        <span class="doc-date">{{ doc.created_at|date:"d.m.Y H:i" }}</span>
+                    </p>
+                </div>
+                <div class="doc-content">
+                    <p>{{ doc.content|truncatewords:30 }}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>

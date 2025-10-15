@@ -2,19 +2,14 @@
 {% block content %}
 
 <div class="doc-list-container">
-    <h3>Your Documents</h3>
-    <hr>
-    {% for doc in documents %}
-        <div class="doc-card">
-            <h3>{{ doc.title }}</h3>
-            <p>{{ doc.content }}</p>
-        </div>
-    {% endfor %}
-    {% if not documents %}
-        <p>No documents created yet.</p>
-    {% endif %}
-</div>
+    <h2 class="doc-list-title">My documents</h2>
+    <hr class="doc-divider">
 
+    {% if documents %}
+        {% include "docshare/modules/doc-grid.html" %}
+    {% else %}
+        <p class="no-docs-message">No documents found.</p>
+    {% endif %}
 </div>
 
 {% endblock %}

@@ -61,7 +61,7 @@ nav form.logout-form button {
 }
 
 .doc-form-container {
-    max-width: 600px;
+    max-width: 100%;
     margin: 30px auto;
     background: white;
     padding: 20px;
@@ -96,15 +96,86 @@ nav form.logout-form button {
     background-color: #0056b3;
 }
 
+
+/*
+ * DOCUMENT LISTS
+ */
 .doc-list-container {
-    max-width: 600px;
+    max-width: 100%;
     margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.doc-list-title {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.doc-divider {
+    border: none;
+    height: 2px;
+    background-color: #007bff;
+    margin-bottom: 25px;
+}
+
+.doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
+    gap: 20px;
+}
+
+/* clickable wrapper */
+.doc-card-link {
+    text-decoration: none;
+    color: inherit;
 }
 
 .doc-card {
-    background: white;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     padding: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.doc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: #007bff;
+    background-color: #ffffff;
+}
+
+.doc-card-header {
+    margin-bottom: 10px;
+}
+
+.doc-title {
+    font-size: 1.2em;
+    color: #007bff;
+    margin: 0;
+}
+
+.doc-meta {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 0.4em;
+}
+
+.doc-content p {
+    font-size: 0.95em;
+    color: #333;
+    line-height: 1.4;
+}
+
+.no-docs-message {
+    text-align: center;
+    color: #777;
+    margin-top: 30px;
+    font-style: italic;
 }

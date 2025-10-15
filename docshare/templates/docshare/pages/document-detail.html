@@ -1,0 +1,17 @@
+{% extends "docshare/base.html" %}
+
+{% block content %}
+<div class="doc-detail-container">
+    <div class="doc-card-header">
+        <h2 class="doc-title">{{ document.title }}</h2>
+        <p class="doc-meta">
+            by <span class="doc-author">{{ document.owner.username }}</span> · 
+            <span class="doc-date">{{ document.created_at|date:"Y-m-d H:i" }}</span>
+        </p>
+    </div>
+    <div class="doc-content">
+        <p>{{ document.content }}</p>
+    </div>
+    <a href="{{ back_url }}" class="back-link">← Back</a>
+</div>
+{% endblock %}
