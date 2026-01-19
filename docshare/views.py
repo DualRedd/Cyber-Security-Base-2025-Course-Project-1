@@ -51,8 +51,8 @@ def edit(request, doc_id):
     #  -> the fix commented out below
     """
     if document.owner != request.user:
-        # redirect to referrer or index if no referrer
-        return redirect(request.META.get('HTTP_REFERER', reverse('index')))
+        # return forbidden 403 page
+        return render(request, 'docshare/pages/403.html', status=403)
     """
 
     if request.method == 'POST':

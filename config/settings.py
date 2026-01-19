@@ -19,19 +19,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Flaw 5: Security Misconfiguration, hardcoded DEBUG=True and SECRET_KEY in production
-#  -> The fix would be to use environment variables
+#                                    and ALLOWED_HOSTS=['*']
+#  -> The fix would be to use environment variables which are configurable per environment
 DEBUG = True
 SECRET_KEY = 'django-insecure-x)df0n7dd4x*&lvm6i#y=-&4**mo+my0@4uoj3+kid%rn-6+^o'
+ALLOWED_HOSTS = ['*']
 """
-# Load values from .env file, so they are configurable per environment
+# Load values from .env file
 load_dotenv(BASE_DIR / '.env')
 DEBUG = os.getenv('DJANGO_DEBUG', 'False').lower() == 'true'
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 if not SECRET_KEY: 
     raise RuntimeError("DJANGO_SECRET_KEY not set")
 """
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
