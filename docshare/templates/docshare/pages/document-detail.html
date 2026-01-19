@@ -10,7 +10,8 @@
         </p>
     </div>
     <div class="doc-content">
-        <p>{{ document.content }}</p>
+        <!-- Flaw 3: XSS vulnerability, fix is to remove the |safe filter, so input is escaped -->
+        <p>{{ document.content|safe }}</p>
     </div>
     <a href="{{ back_url }}" class="back-button">← Back</a>
     {% if user.is_authenticated and user == document.owner %}
