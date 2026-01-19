@@ -2,7 +2,13 @@
 {% block content %}
 
 <div class="doc-list-container">
-    <h2 class="doc-list-title">All Documents</h2>
+    <h2 class="doc-list-title">Shared Documents</h2>
+
+    <form method="get" action="" class="search-form">
+        <input type="text" name="q" placeholder="Search by title" value="{{ q|default:'' }}">
+        <button type="submit">Search</button>
+    </form>
+
     <hr class="doc-divider">
 
     {% if documents %}

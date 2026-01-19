@@ -6,7 +6,12 @@
                     <h3 class="doc-title">{{ doc.title }}</h3>
                     <p class="doc-meta">
                         by <span class="doc-author">{{ doc.owner.username }}</span> · 
-                        <span class="doc-date">{{ doc.created_at|date:"d.m.Y H:i" }}</span>
+                        <span class="doc-date">{{ doc.created_at|date:"d.m.Y H:i" }}</span> · 
+                        {% if doc.ispublic %}
+                            <span class="doc-visibility">Public</span>
+                        {% else %}
+                            <span class="doc-visibility">Private</span>
+                        {% endif %}
                     </p>
                 </div>
                 <div class="doc-content">

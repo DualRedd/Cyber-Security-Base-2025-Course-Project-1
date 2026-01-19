@@ -9,8 +9,17 @@ from .forms import DocumentForm
 
 @login_required
 def index(request):
-    documents = Document.objects.order_by('-created_at')
-    return render(request, 'docshare/pages/index.html', {'documents': documents})
+    q = request.GET.get('q')
+    if q:
+        # Flaw 4: SQL injection vulnerability, directly using user input in raw SQL query
+        #  -> The fix commented out below
+        sql = f"SELECT * FROM docshare_document WHERE ispublic = 1 AND title LIKE '%{q}%' ORDER BY created_at DESC"
+        documents = Document.objects.raw(sql)
+        #documents = Document.objects.filter(ispublic=True, title__icontains=q).order_by('-created_at')
+    else:
+        documents = Document.objects.filter(ispublic=True).order_by('-created_at')
+
+    return render(request, 'docshare/pages/index.html', {'documents': documents, 'q': q})
 
 @login_required
 def mypage(request):
@@ -46,15 +55,11 @@ def edit(request, doc_id):
     """
 
     if request.method == 'POST':
-        title = request.POST.get('title')
-        content = request.POST.get('content')
+        form = DocumentForm(request.POST, instance=document)
+        if form.is_valid():
+            document = form.save()
+            return redirect('viewdoc', doc_id=document.id)
 
-        if title is not None:
-            document.title = title
-        if content is not None:
-            document.content = content
-
-        document.save()
         return redirect('viewdoc', doc_id=document.id)
     else:
         form = DocumentForm(instance=document)
