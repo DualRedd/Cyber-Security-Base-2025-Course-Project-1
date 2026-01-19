@@ -1,10 +1,11 @@
 {% extends "docshare/base.html" %}
 {% block content %}
 <div class="doc-form-container">
-    <h2 style="margin-top: 0;">Create a New Document</h2>
+    <h2 style="margin-top: 0;">Edit Document</h2>
 
     <form method="POST" action="">
-        {% csrf_token %}
+        <!-- Flaw 1: CSRF vulnerability, fixed by uncommenting the csrf_token -->
+        <!-- {% csrf_token %} -->
         <div class="form-group">
             <label for="title">Title:</label><br>
             {{ form.title }}

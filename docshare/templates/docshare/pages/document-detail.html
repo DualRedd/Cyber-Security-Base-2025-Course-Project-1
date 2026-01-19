@@ -12,6 +12,9 @@
     <div class="doc-content">
         <p>{{ document.content }}</p>
     </div>
-    <a href="{{ back_url }}" class="back-link">← Back</a>
+    <a href="{{ back_url }}" class="back-button">← Back</a>
+    {% if user.is_authenticated and user == document.owner %}
+    <a href="{% url 'editdoc' doc_id=document.id %}" class="edit-button">Edit</a>
+    {% endif %}
 </div>
 {% endblock %}

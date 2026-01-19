@@ -65,8 +65,6 @@ nav form.logout-form button {
     margin: 30px auto;
     background: white;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -96,6 +94,32 @@ nav form.logout-form button {
     background-color: #0056b3;
 }
 
+/*
+ * Buttons
+ */
+.edit-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 10px;
+    padding: 8px 12px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
 
 /*
  * DOCUMENT LISTS
@@ -105,8 +129,6 @@ nav form.logout-form button {
     margin: 30px auto;
     padding: 20px;
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .doc-list-title {

@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -30,10 +31,40 @@ def create(request):
     return render(request, 'docshare/pages/create-doc.html', {'form': form})
 
 
+# Flaw 1: CSRF vulnerability, fixed by removing the @csrf_exempt decorator
+# Flaw 2: Broken Access Control, missing @login_required decorator
+@csrf_exempt
+def edit(request, doc_id):
+    document = get_object_or_404(Document, id=doc_id)
+
+    # Flaw 2: Broken Access Control, not checking if request.user is the owner of the document
+    #  -> the fix commented out below
+    """
+    if document.owner != request.user:
+        # redirect to referrer or index if no referrer
+        return redirect(request.META.get('HTTP_REFERER', reverse('index')))
+    """
+
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+
+        if title is not None:
+            document.title = title
+        if content is not None:
+            document.content = content
+
+        document.save()
+        return redirect('viewdoc', doc_id=document.id)
+    else:
+        form = DocumentForm(instance=document)
+    return render(request, 'docshare/pages/edit-doc.html', {'form': form})
+
+
 @login_required
 def document_detail(request, doc_id):
     document = get_object_or_404(Document, id=doc_id)
-    back_url = request.META.get('HTTP_REFERER', reverse('index'))
+    back_url = reverse('index')
     return render(request, 'docshare/pages/document-detail.html', {'document': document, 'back_url': back_url})
 
 def register(request):

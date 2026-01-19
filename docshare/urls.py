@@ -9,5 +9,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('me/', views.mypage, name='mypage'),
     path('create/', views.create, name='createdoc'),
-    path('document/<int:doc_id>/', views.document_detail, name='document-detail'),
+    path('edit/<int:doc_id>/', views.edit, name='editdoc'),
+    path('view/<int:doc_id>/', views.document_detail, name='viewdoc'),
 ]

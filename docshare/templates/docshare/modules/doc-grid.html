@@ -1,6 +1,6 @@
 <div class="doc-grid">
     {% for doc in documents %}
-        <a href="{% url 'document-detail' doc.id %}" class="doc-card-link">
+        <a href="{% url 'viewdoc' doc.id %}" class="doc-card-link">
             <div class="doc-card">
                 <div class="doc-card-header">
                     <h3 class="doc-title">{{ doc.title }}</h3>
