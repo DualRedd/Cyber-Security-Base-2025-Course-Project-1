@@ -1,4 +1,4 @@
-Project: Cyber Security Base — Course Project 1
+Cyber Security Base - Course Project 1
 
 # Installation
 
@@ -10,32 +10,32 @@ Prerequisites:
 
 2. Create and activate a virtual environment:
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-```
+    ```bash
+    python -m venv .venv
+    source .venv/bin/activate
+    ```
 
 3. Install dependencies:
 
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 4. Apply database migrations and create a superuser if needed:
 
-```bash
-python manage.py migrate
-python manage.py createsuperuser
-```
+    ```bash
+    python manage.py migrate
+    python manage.py createsuperuser
+    ```
 
 5. Run the development server:
 
-```bash
-python manage.py runserver
-```
+    ```bash
+    python manage.py runserver
+    ```
 
 6. Run tests:
 
-```bash
-python manage.py test
-```
+    ```bash
+    python manage.py test
+    ```
